@@ -27,5 +27,6 @@ jobs:
           cd $REMOTE_PATH
           git pull
           systemctl --user stop strapi
+          yarn install
           yarn build
           systemctl --user start strapi
