@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Deploy using ssh
-      uses: garygrossgarten/github-action-ssh@v0.5.0
+      uses: appleboy/ssh-action@v0.1.2
       env:
         REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
       with:
