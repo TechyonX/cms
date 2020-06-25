@@ -23,8 +23,8 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.PORT }}
         script_stop: true
+        envs: REMOTE_PATH
         script: |
-          echo $REMOTE_PATH
           cd $REMOTE_PATH
           git pull
           systemctl --user stop strapi
