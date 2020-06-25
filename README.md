@@ -34,6 +34,25 @@ Node package-уудыг суулгах
 
 `NODE_ENV=production yarn start`
 
+### Systemd service
+
+```
+[Unit]
+Description=TechyonX Strapi
+After=network.target
+
+[Service]
+Type=simple
+User=techyonx
+Environment=NODE_ENV=production
+WorkingDirectory=/srv/techyonx/cms
+ExecStart=/usr/bin/yarn start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
 ---
 
 [Strapi Documentation](https://strapi.io/documentation/v3.x/)
