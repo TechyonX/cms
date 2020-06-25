@@ -42,15 +42,13 @@ Description=TechyonX Strapi
 After=network.target
 
 [Service]
-Type=simple
-User=techyonx
 Environment=NODE_ENV=production
 WorkingDirectory=/srv/techyonx/cms
 ExecStart=/usr/bin/yarn start
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ```
 
 ---
