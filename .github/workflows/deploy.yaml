@@ -1,0 +1,29 @@
+name: deploy
+
+# Trigger on push
+on:
+  push:
+    branches: [ master ]
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Deploy using ssh
+      uses: garygrossgarten/github-action-ssh@v0.5.0
+      env:
+        REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+      with:
+        command: ls -a
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd $REMOTE_PATH
+          git pull
+          systemctl --user stop strapi
+          yarn build
+          systemctl --user start strapi
