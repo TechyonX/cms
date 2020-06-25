@@ -17,7 +17,6 @@ jobs:
       env:
         REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
       with:
-        command: ls -a
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_KEY }}
