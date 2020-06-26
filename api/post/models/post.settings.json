@@ -30,24 +30,23 @@
       "plugin": "upload",
       "required": false
     },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "published",
-        "draft",
-        "archived"
-      ],
-      "default": "draft"
-    },
     "tags": {
-      "via": "posts",
       "collection": "tag",
+      "via": "posts",
       "dominant": true
     },
-    "user": {
-      "via": "posts",
+    "author": {
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "posts"
+    },
+    "publish_at": {
+      "type": "datetime"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": false,
+      "private": true
     }
   }
 }

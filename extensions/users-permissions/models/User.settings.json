@@ -54,8 +54,8 @@
       "configurable": false
     },
     "posts": {
-      "collection": "post",
-      "via": "user"
+      "via": "author",
+      "collection": "post"
     }
   }
 }
