@@ -43,10 +43,16 @@
     "publish_at": {
       "type": "datetime"
     },
-    "publish": {
-      "type": "boolean",
-      "default": false,
-      "private": true
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "published",
+        "draft",
+        "archived"
+      ],
+      "default": "draft",
+      "private": false,
+      "required": true
     }
   }
 }

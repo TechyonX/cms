@@ -18,7 +18,7 @@ module.exports = {
 
     ctx.query = {
       ...ctx.query,
-      publish: true,
+      status: 'published',
     };
 
     if (ctx.query._q) {
@@ -41,7 +41,7 @@ module.exports = {
   count(ctx) {
     ctx.query = {
       ...ctx.query,
-      publish: true,
+      status: 'published',
     };
 
     if (ctx.query._q) {
