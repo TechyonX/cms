@@ -7,6 +7,12 @@ const { sanitizeEntity } = require("strapi-utils");
  */
 
 module.exports = {
+  
+  /**
+   * Retrieve records.
+   *
+   * @return {Array}
+   */
   async find(ctx) {
     let entities;
 
@@ -24,5 +30,23 @@ module.exports = {
     return entities.map((entity) =>
       sanitizeEntity(entity, { model: strapi.models.post })
     );
+  },
+
+  /**
+   * Count records.
+   *
+   * @return {Number}
+   */
+
+  count(ctx) {
+    ctx.query = {
+      ...ctx.query,
+      publish: true,
+    };
+
+    if (ctx.query._q) {
+      return strapi.services.post.countSearch(ctx.query);
+    }
+    return strapi.services.post.count(ctx.query);
   },
 };
