@@ -5,28 +5,28 @@
  * @param {string} text - slug болгох бичвэр
  * @returns {string}
  */
-const apply_slugify = text => {
-    const slugify = require("slugify");
-    
-    slugify.extend({
-      ж: "j",
-      Ж: "J",
-      ө: "o",
-      Ө: "ө",
-      ү: "u",
-      Ү: "U",
-      й: "i",
-      Й: "I",
-      ц: "ts",
-      Ц: "Ts",
-      ъ: "",
-      Ъ: "",
-    });
+const apply_slugify = (text) => {
+  const slugify = require("slugify");
 
-    return slugify(text, {
-          lower: true,
-          strict: true,
-        });
+  slugify.extend({
+    ж: "j",
+    Ж: "J",
+    ө: "o",
+    Ө: "ө",
+    ү: "u",
+    Ү: "U",
+    й: "i",
+    Й: "I",
+    ц: "ts",
+    Ц: "Ts",
+    ъ: "",
+    Ъ: "",
+  });
+
+  return slugify(text, {
+    lower: true,
+    strict: true,
+  });
 };
 
 /**
@@ -37,12 +37,18 @@ const apply_slugify = text => {
 module.exports = {
   lifecycles: {
     async beforeCreate(data) {
-      if (data.title) {
-        data.slug = apply_slugify(data.title)
+      if (
+        data.title &&
+        (data.slug === null || data.slug === undefined || data.slug === "")
+      ) {
+        data.slug = apply_slugify(data.title);
       }
     },
     async beforeUpdate(params, data) {
-      if (data.title) {
+      if (
+        data.title &&
+        (data.slug === null || data.slug === undefined || data.slug === "")
+      ) {
         data.slug = apply_slugify(data.title);
       }
     },
