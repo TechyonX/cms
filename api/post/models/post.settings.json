@@ -30,6 +30,19 @@
       "plugin": "upload",
       "required": false
     },
+    "tags": {
+      "collection": "tag",
+      "via": "posts",
+      "dominant": true
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "posts"
+    },
+    "publish_at": {
+      "type": "datetime"
+    },
     "status": {
       "type": "enumeration",
       "enum": [
@@ -37,17 +50,9 @@
         "draft",
         "archived"
       ],
-      "default": "draft"
-    },
-    "tags": {
-      "via": "posts",
-      "collection": "tag",
-      "dominant": true
-    },
-    "user": {
-      "via": "posts",
-      "plugin": "users-permissions",
-      "model": "user"
+      "default": "draft",
+      "private": false,
+      "required": true
     }
   }
 }

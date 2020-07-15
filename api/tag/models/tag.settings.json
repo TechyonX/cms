@@ -13,8 +13,8 @@
       "type": "string"
     },
     "posts": {
-      "collection": "post",
-      "via": "tags"
+      "via": "tags",
+      "collection": "post"
     },
     "slug": {
       "type": "string"
