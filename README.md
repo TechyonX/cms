@@ -10,6 +10,14 @@ Node package-уудыг суулгах
 
 `cp .env.example .env`
 
+Хэрэв шаардлагатай ӨС байхгүй бол `mysql` суулгаад доорх командуудаар ӨС, хэрэглэгч, хэрэглэгчийн эрхүүдийг тохируулах
+
+`create database techyonx;`
+
+`create user 'techyonx'@'localhost' identified with mysql_native_password by 'techyonx';`
+
+`grant all on techyonx.* to 'techyonx'@'localhost';`
+
 Хөгжүүлэлт эхлүүлэх
 
 `yarn build && yarn develop`
