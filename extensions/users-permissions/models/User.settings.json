@@ -54,8 +54,28 @@
       "configurable": false
     },
     "posts": {
-      "via": "author",
-      "collection": "post"
+      "collection": "post",
+      "via": "author"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string",
+      "regex": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "bio": {
+      "type": "richtext",
+      "maxLength": 200
     }
   }
 }
