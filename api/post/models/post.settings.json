@@ -37,9 +37,9 @@
       "dominant": true
     },
     "author": {
+      "via": "posts",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "posts"
+      "model": "user"
     },
     "publish_at": {
       "type": "datetime"
