@@ -10,4 +10,8 @@ module.exports = ({ env }) => ({
       secret: env("ADMIN_JWT_SECRET"),
     },
   },
+  github: {
+    webhook: env("GITHUB_WEBHOOK", ""),
+    token: env("GITHUB_TOKEN", ""),
+  },
 });
