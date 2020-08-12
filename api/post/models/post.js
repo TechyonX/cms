@@ -1,33 +1,6 @@
 "use strict";
 
-/**
- * Бичвэрийг хаягийн мөрөнд тохиромжтой хэлбэрт оруулах функц
- * @param {string} text - slug болгох бичвэр
- * @returns {string}
- */
-const apply_slugify = (text) => {
-  const slugify = require("slugify");
-
-  slugify.extend({
-    ж: "j",
-    Ж: "J",
-    ө: "o",
-    Ө: "ө",
-    ү: "u",
-    Ү: "U",
-    й: "i",
-    Й: "I",
-    ц: "ts",
-    Ц: "Ts",
-    ъ: "",
-    Ъ: "",
-  });
-
-  return slugify(text, {
-    lower: true,
-    strict: true,
-  });
-};
+const utils = require("../../../misc/utils");
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
@@ -42,7 +15,7 @@ module.exports = {
         data.title &&
         (data.slug === null || data.slug === undefined || data.slug === "")
       ) {
-        data.slug = apply_slugify(data.title);
+        data.slug = utils.apply_slugify(data.title);
       }
 
       // Publish_at хоосон боловч нийтлэсэн төлөвтэй байвал одоогийн огноог өгнө
@@ -61,7 +34,7 @@ module.exports = {
         data.title &&
         (data.slug === null || data.slug === undefined || data.slug === "")
       ) {
-        data.slug = apply_slugify(data.title);
+        data.slug = utils.apply_slugify(data.title);
       }
 
       // Publish_at хоосон боловч нийтлэсэн төлөвтэй байвал одоогийн огноог өгнө
@@ -74,5 +47,13 @@ module.exports = {
         data.publish_at = new Date();
       }
     },
+    async afterCreate(data) {
+      if(data.status==="published"){
+        utils.trigger_workflow();
+      }
+    },
+    // trigger хийхийг цөөлөх боломжтой бол цөөлөх
+    afterUpdate: utils.trigger_workflow,
+    afterDelete: utils.trigger_workflow,
   },
 };
