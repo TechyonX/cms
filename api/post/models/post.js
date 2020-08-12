@@ -47,7 +47,12 @@ module.exports = {
         data.publish_at = new Date();
       }
     },
-    afterCreate: utils.trigger_workflow,
+    async afterCreate(data) {
+      if(data.status==="published"){
+        utils.trigger_workflow();
+      }
+    },
+    // trigger хийхийг цөөлөх боломжтой бол цөөлөх
     afterUpdate: utils.trigger_workflow,
     afterDelete: utils.trigger_workflow,
   },

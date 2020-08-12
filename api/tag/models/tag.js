@@ -19,6 +19,7 @@ module.exports = {
         data.slug = utils.apply_slugify(data.name);
       }
     },
+    // trigger хийхийг цөөлөх боломжтой бол цөөлөх
     afterCreate: utils.trigger_workflow,
     afterUpdate: utils.trigger_workflow,
     afterDelete: utils.trigger_workflow,
