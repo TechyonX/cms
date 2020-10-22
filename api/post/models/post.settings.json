@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "posts",
   "info": {
-    "name": "Post"
+    "name": "Post",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {
@@ -37,22 +39,23 @@
       "dominant": true
     },
     "author": {
-      "via": "posts",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "posts"
     },
     "publish_at": {
-      "type": "datetime"
+      "type": "datetime",
+      "private": false
     },
     "status": {
       "type": "enumeration",
       "enum": [
-        "published",
         "draft",
-        "archived"
+        "scheduled",
+        "published"
       ],
       "default": "draft",
-      "private": false,
+      "private": true,
       "required": true
     }
   }

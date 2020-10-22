@@ -54,8 +54,8 @@
       "configurable": false
     },
     "posts": {
-      "collection": "post",
-      "via": "author"
+      "via": "author",
+      "collection": "post"
     },
     "full_name": {
       "type": "string"
@@ -76,6 +76,11 @@
     "bio": {
       "type": "richtext",
       "maxLength": 200
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
     }
   }
 }

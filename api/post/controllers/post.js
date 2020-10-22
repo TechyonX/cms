@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 const { sanitizeEntity } = require("strapi-utils");
 
 /**
@@ -7,7 +7,6 @@ const { sanitizeEntity } = require("strapi-utils");
  */
 
 module.exports = {
-  
   /**
    * Retrieve records.
    *
@@ -18,7 +17,7 @@ module.exports = {
 
     ctx.query = {
       ...ctx.query,
-      status: 'published',
+      status: "published",
     };
 
     if (ctx.query._q) {
@@ -41,7 +40,7 @@ module.exports = {
   count(ctx) {
     ctx.query = {
       ...ctx.query,
-      status: 'published',
+      status: "published",
     };
 
     if (ctx.query._q) {
