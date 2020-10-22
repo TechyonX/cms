@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Cron config that gives you an opportunity
@@ -20,12 +20,10 @@ module.exports = {
   // }
   "*/1 * * * *": async () => {
     // fetch posts to publish
-    const draftPostToPublish = await strapi.api.post.services.post.find(
-      {
-        status: "draft",
-        publish_at_lt: new Date(),
-      }
-    );
+    const draftPostToPublish = await strapi.api.post.services.post.find({
+      status: "scheduled",
+      publish_at_lt: new Date(),
+    });
 
     // update status of posts
     draftPostToPublish.forEach(async (post) => {

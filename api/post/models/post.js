@@ -18,12 +18,10 @@ module.exports = {
         data.slug = utils.apply_slugify(data.title);
       }
 
-      // Publish_at хоосон боловч нийтлэсэн төлөвтэй байвал одоогийн огноог өгнө
       if (
-        data.status === "published" &&
-        (data.publish_at === undefined ||
-          data.publish_at === null ||
-          data.publish_at === "")
+        data.publish_at === null ||
+        data.publish_at === undefined ||
+        data.publish_at === ""
       ) {
         data.publish_at = new Date();
       }
@@ -37,18 +35,16 @@ module.exports = {
         data.slug = utils.apply_slugify(data.title);
       }
 
-      // Publish_at хоосон боловч нийтлэсэн төлөвтэй байвал одоогийн огноог өгнө
       if (
-        data.status === "published" &&
-        (data.publish_at === undefined ||
-          data.publish_at === null ||
-          data.publish_at === "")
+        data.publish_at === null ||
+        data.publish_at === undefined ||
+        data.publish_at === ""
       ) {
         data.publish_at = new Date();
       }
     },
     async afterCreate(data) {
-      if(data.status==="published"){
+      if (data.published) {
         utils.trigger_workflow();
       }
     },
