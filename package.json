@@ -11,7 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "knex": "^0.21.0",
     "mysql": "latest",
     "slugify": "^1.4.2",
